@@ -29,13 +29,13 @@ func (*FileReader) ReadECMC(path string) EC_MC {
 	return ec
 }
 
-func (*FileReader) ReadSDC(path string) SDC {
+func (*FileReader) ReadSDC(path string) CustomerSDC {
 	raw, err := ioutil.ReadFile(path)
 	if err != nil {
 		fmt.Printf("input data read error :%#v", err.Error())
 		os.Exit(1)
 	}
-	sdc := SDC{}
+	sdc := CustomerSDC{}
 	err = json.Unmarshal(raw, &sdc)
 	if err != nil {
 		fmt.Printf("input data marshal error :%#v", err.Error())
@@ -45,13 +45,13 @@ func (*FileReader) ReadSDC(path string) SDC {
 	return sdc
 }
 
-func ConvertToSDC(data map[string]interface{}) SDC {
+func ConvertToSDC(data map[string]interface{}) CustomerSDC {
 	raw, err := json.Marshal(data)
 	if err != nil {
 		fmt.Printf("data marshal error :%#v", err.Error())
-		return SDC{}
+		return CustomerSDC{}
 	}
-	sdc := SDC{}
+	sdc := CustomerSDC{}
 	err = json.Unmarshal(raw, &sdc)
 	if err != nil {
 		fmt.Printf("input data marshal error :%#v", err.Error())

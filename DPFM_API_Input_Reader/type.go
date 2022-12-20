@@ -53,7 +53,7 @@ type EC_MC struct {
 	Deleted       bool     `json:"deleted"`
 }
 
-type SDC struct {
+type CustomerSDC struct {
 	ConnectionKey           string `json:"connection_key"`
 	Result                  bool   `json:"result"`
 	RedisKey                string `json:"redis_key"`
@@ -66,6 +66,72 @@ type SDC struct {
 		BusinessPartner *int `json:"BusinessPartner"`
 		Customer        *int `json:"Customer"`
 	} `json:"BusinessPartnerCustomer"`
+	APISchema string   `json:"api_schema"`
+	Accepter  []string `json:"accepter"`
+	OrderID   *int     `json:"order_id"`
+	Deleted   bool     `json:"deleted"`
+}
+
+type PartnerFunctionContactSDC struct {
+	ConnectionKey                                 string `json:"connection_key"`
+	Result                                        bool   `json:"result"`
+	RedisKey                                      string `json:"redis_key"`
+	Filepath                                      string `json:"filepath"`
+	APIStatusCode                                 int    `json:"api_status_code"`
+	RuntimeSessionID                              string `json:"runtime_session_id"`
+	BusinessPartnerID                             *int   `json:"business_partner"`
+	ServiceLabel                                  string `json:"service_label"`
+	BusinessPartnerCustomerPartnerFunctionContact struct {
+		BusinessPartner *int `json:"BusinessPartner"`
+		Customer        *int `json:"Customer"`
+		PartnerCounter  *int `json:"PartnerCounter"`
+		ContactID       *int `json:"ContactID"`
+	} `json:"BusinessPartnerCustomerPartnerFunctionContact"`
+	APISchema string   `json:"api_schema"`
+	Accepter  []string `json:"accepter"`
+	OrderID   *int     `json:"order_id"`
+	Deleted   bool     `json:"deleted"`
+}
+
+type PartnerPlantSDC struct {
+	ConnectionKey                       string `json:"connection_key"`
+	Result                              bool   `json:"result"`
+	RedisKey                            string `json:"redis_key"`
+	Filepath                            string `json:"filepath"`
+	APIStatusCode                       int    `json:"api_status_code"`
+	RuntimeSessionID                    string `json:"runtime_session_id"`
+	BusinessPartnerID                   *int   `json:"business_partner"`
+	ServiceLabel                        string `json:"service_label"`
+	BusinessPartnerCustomerPartnerPlant struct {
+		BusinessPartner                *int    `json:"BusinessPartner"`
+		Customer                       *int    `json:"Customer"`
+		PartnerCounter                 *int    `json:"PartnerCounter"`
+		PartnerFunction                *string `json:"PartnerFunction"`
+		PartnerFunctionBusinessPartner *int    `json:"PartnerFunctionBusinessPartner"`
+		PlantCounter                   *int    `json:"PlantCounter"`
+	} `json:"BusinessPartnerCustomerPartnerPlant"`
+	APISchema string   `json:"api_schema"`
+	Accepter  []string `json:"accepter"`
+	OrderID   *int     `json:"order_id"`
+	Deleted   bool     `json:"deleted"`
+}
+
+type FinInstSDC struct {
+	ConnectionKey                  string `json:"connection_key"`
+	Result                         bool   `json:"result"`
+	RedisKey                       string `json:"redis_key"`
+	Filepath                       string `json:"filepath"`
+	APIStatusCode                  int    `json:"api_status_code"`
+	RuntimeSessionID               string `json:"runtime_session_id"`
+	BusinessPartnerID              *int   `json:"business_partner"`
+	ServiceLabel                   string `json:"service_label"`
+	BusinessPartnerCustomerFinInst struct {
+		BusinessPartner       *int    `json:"BusinessPartner"`
+		Customer              *int    `json:"Customer"`
+		FinInstIdentification *int    `json:"FinInstIdentification"`
+		ValidityEndDate       *string `json:"ValidityEndDate"`
+		ValidityStartDate     *string `json:"ValidityStartDate"`
+	} `json:"BusinessPartnerCustomerFinInst"`
 	APISchema string   `json:"api_schema"`
 	Accepter  []string `json:"accepter"`
 	OrderID   *int     `json:"order_id"`
